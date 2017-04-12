@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="#fff">
+    <LinearLayout
+        android:id="@+id/product_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/selectableItemBackground"
+        android:paddingBottom="8dp">
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="150dp" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:text="Sườn xào chua ngọt hấp lá cải"
+            android:padding="8dp"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/primary_text_light"
+            android:textSize="@dimen/primary_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/cost_text"
+                android:text="$200,000"
+                android:textSize="@dimen/secondary_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/like_image"
+                android:src="@drawable/ic_liked"
+                android:tint="@color/colorPrimary"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/like_total"
+                android:text="29"
+                android:textColor="@color/primary_text_light"
+                android:textSize="@dimen/secondary_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

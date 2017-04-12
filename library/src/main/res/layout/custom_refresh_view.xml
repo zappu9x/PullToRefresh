@@ -8,13 +8,13 @@
     android:orientation="vertical"
     android:id="@+id/refresh_layout"
     android:padding="8dp">
-    <com.wang.avi.AVLoadingIndicatorView
+    <com.vetrio.library.progress.ProgressView
         android:id="@+id/loading"
         android:layout_width="48dp"
         android:layout_height="48dp"
         style="@style/AVLoadingIndicatorView"
         android:visibility="visible"
-        app:indicatorName="LineSpinFadeLoaderIndicator"
+        app:indicatorName="LineIndicator"
         app:indicatorColor="#FF9800"
         android:padding="4dp"/>
     <TextView

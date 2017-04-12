@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Text size-->
+    <dimen name="secondary_text_size">12sp</dimen>
+    <dimen name="primary_text_size">14sp</dimen>
+</resources>

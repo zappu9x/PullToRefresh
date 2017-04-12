@@ -4,15 +4,15 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wang.avi.AVLoadingIndicatorView;
-import com.wang.avi.Indicator;
+import com.vetrio.library.progress.Indicator;
+import com.vetrio.library.progress.LineIndicator;
+import com.vetrio.library.progress.ProgressView;
 
 public class RefreshView extends LinearLayout {
-    AVLoadingIndicatorView mLoadingView;
+    ProgressView mLoadingView;
     TextView mTitleView;
     LinearLayout mRefreshLayout;
 
@@ -41,7 +41,7 @@ public class RefreshView extends LinearLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.custom_refresh_view, this);
-        mLoadingView = (AVLoadingIndicatorView) findViewById(R.id.loading);
+        mLoadingView = (ProgressView) findViewById(R.id.loading);
         mTitleView = (TextView) findViewById(R.id.title);
         mRefreshLayout = (LinearLayout) findViewById(R.id.refresh_layout);
         mIndicator = new LineIndicator();
@@ -57,8 +57,6 @@ public class RefreshView extends LinearLayout {
         mTitleView.setScaleX(percent);
         mTitleView.setScaleY(percent);
         mTitleView.setAlpha(percent);
-
-        Log.d("AAAAAAAAAAAAAAAAAAA", mRefreshLayout.getHeight() + "\t" + Utils.convertDpToPixel(getContext(), 120));
     }
 
     @Override

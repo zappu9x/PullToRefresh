@@ -1,37 +1,12 @@
-package com.vetrio.library;
+package com.vetrio.library.progress;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
-import com.wang.avi.indicators.BallSpinFadeLoaderIndicator;
-
 import java.util.ArrayList;
 
-public class LineIndicator extends BallSpinFadeLoaderIndicator {
-
-    public static final float SCALE=1.0f;
-
-    public static final int ALPHA=255;
-
-    float[] scaleFloats=new float[]{SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE};
-
-    int[] alphas=new int[]{ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA};
-
+public class LineIndicator extends BallIndicator {
     private ArrayList<RectF> rectFs = new ArrayList<>();
     private boolean isCreate = true;
     private boolean isRefreshing = false;
@@ -85,22 +60,6 @@ public class LineIndicator extends BallSpinFadeLoaderIndicator {
             this.percent = 0;
         } else {
             this.percent = 2*percent - 1;
-        }
-    }
-
-    Point circleAt(int width, int height, float radius, double angle){
-        float x= (float) (width/2+radius*(Math.cos(angle)));
-        float y= (float) (height/2+radius*(Math.sin(angle)));
-        return new Point(x,y);
-    }
-
-    final class Point{
-        public float x;
-        public float y;
-
-        public Point(float x, float y){
-            this.x=x;
-            this.y=y;
         }
     }
 }
