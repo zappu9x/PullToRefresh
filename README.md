@@ -8,6 +8,9 @@ PullToRefresh
 ## Introduction
 PullToRefresh is a collection of nice pull to refresh layout for Android.
 
+## Demo
+![avi](demo.gif)
+
 ## Usage
 
 ### Step 1
