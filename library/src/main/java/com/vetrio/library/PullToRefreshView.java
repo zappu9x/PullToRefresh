@@ -1,6 +1,7 @@
 package com.vetrio.library;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
@@ -53,7 +54,7 @@ public class PullToRefreshView extends ViewGroup {
 
     public PullToRefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mRefreshView = new RefreshView(context);
+        mRefreshView = new RefreshView(context, attrs);
         mDecelerateInterpolator = new DecelerateInterpolator(DECELERATE_INTERPOLATION_FACTOR);
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         mTotalDragDistance = Utils.convertDpToPixel(context, DRAG_MAX_DISTANCE);

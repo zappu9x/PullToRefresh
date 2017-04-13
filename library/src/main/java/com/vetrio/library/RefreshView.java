@@ -2,11 +2,14 @@ package com.vetrio.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.vetrio.library.progress.BallIndicator;
 import com.vetrio.library.progress.Indicator;
 import com.vetrio.library.progress.LineIndicator;
 import com.vetrio.library.progress.ProgressView;
@@ -16,7 +19,7 @@ public class RefreshView extends LinearLayout {
     TextView mTitleView;
     LinearLayout mRefreshLayout;
 
-    private LineIndicator mIndicator;
+    private Indicator mIndicator;
 
     public RefreshView(Context context) {
         super(context);
@@ -26,6 +29,38 @@ public class RefreshView extends LinearLayout {
     public RefreshView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
+
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PullToRefreshView, 0, 0);
+        try {
+            String titleText = typedArray.getString(R.styleable.PullToRefreshView_titleText);
+            int titleColor = typedArray.getColor(R.styleable.PullToRefreshView_titleColor, Color.WHITE);
+            boolean isShowTitle = typedArray.getBoolean(R.styleable.PullToRefreshView_showTitle, true);
+            int progressName = typedArray.getInt(R.styleable.PullToRefreshView_progressName, 0);
+            int progressColor = typedArray.getColor(R.styleable.PullToRefreshView_progressColor, Color.WHITE);
+
+            mTitleView.setText(titleText);
+            mTitleView.setTextColor(titleColor);
+            mTitleView.setVisibility(isShowTitle ? VISIBLE : GONE);
+            mLoadingView.setIndicatorColor(progressColor);
+            setIndicator(progressName);
+            mLoadingView.setIndicator(mIndicator);
+            setPercent(0, false);
+        } finally {
+            typedArray.recycle();
+        }
+    }
+
+    private void setIndicator(int code) {
+        switch (code){
+            case 0:
+                mIndicator =  new LineIndicator();
+                break;
+            case 1:
+                mIndicator =  new BallIndicator();
+                break;
+            default:
+                mIndicator =  new LineIndicator();
+        }
     }
 
     public RefreshView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -62,14 +97,6 @@ public class RefreshView extends LinearLayout {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-    }
-
-    public TextView getTitleView() {
-        return mTitleView;
-    }
-
-    public Indicator getProgressView() {
-        return mIndicator;
     }
 
     public void start() {

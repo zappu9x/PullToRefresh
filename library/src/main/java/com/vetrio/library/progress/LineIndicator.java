@@ -8,9 +8,6 @@ import java.util.ArrayList;
 
 public class LineIndicator extends BallIndicator {
     private ArrayList<RectF> rectFs = new ArrayList<>();
-    private boolean isCreate = true;
-    private boolean isRefreshing = false;
-    private float percent = 0f;
 
     public LineIndicator() {
         super();
@@ -49,17 +46,5 @@ public class LineIndicator extends BallIndicator {
             canvas.restore();
         }
         isCreate = false;
-    }
-
-    public void setRefreshing(boolean isResfreshing) {
-        this.isRefreshing = isResfreshing;
-    }
-
-    public void setPercent(float percent) {
-        if(percent < .5f) {
-            this.percent = 0;
-        } else {
-            this.percent = 2*percent - 1;
-        }
     }
 }

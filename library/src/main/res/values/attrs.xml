@@ -10,4 +10,15 @@
         <attr name="indicatorColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="PullToRefreshView">
+        <attr name="titleText" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="showTitle" format="boolean" />
+        <attr name="progressName" format="string">
+            <enum name="LineIndicator" value="0"/>
+            <enum name="BallIndicator" value="1"/>
+        </attr>
+        <attr name="progressColor" format="color"/>
+    </declare-styleable>
+
 </resources>

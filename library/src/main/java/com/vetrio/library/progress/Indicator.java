@@ -15,6 +15,10 @@ import java.util.HashMap;
 
 public abstract class Indicator extends Drawable implements Animatable {
 
+    boolean isCreate = true;
+    boolean isRefreshing = false;
+    float percent = 0f;
+
     private HashMap<ValueAnimator,ValueAnimator.AnimatorUpdateListener> mUpdateListeners=new HashMap<>();
 
     private ArrayList<ValueAnimator> mAnimators;
@@ -192,6 +196,21 @@ public abstract class Indicator extends Drawable implements Animatable {
 
     public float exactCenterY(){
         return drawBounds.exactCenterY();
+    }
+
+
+
+
+    public void setRefreshing(boolean isResfreshing) {
+        this.isRefreshing = isResfreshing;
+    }
+
+    public void setPercent(float percent) {
+        if(percent < .5f) {
+            this.percent = 0;
+        } else {
+            this.percent = 2*percent - 1;
+        }
     }
 
 }

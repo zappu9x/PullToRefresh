@@ -35,12 +35,29 @@ public class BallIndicator extends Indicator {
     @Override
     public void draw(Canvas canvas, Paint paint) {
         float radius=getWidth()/10;
+        float scale;
+        int alpha;
         for (int i = 0; i < 8; i++) {
             canvas.save();
             Point point=circleAt(getWidth(),getHeight(),getWidth()/2-radius,i*(Math.PI/4));
+
+            if(!isRefreshing) {
+                if(i < percent * 8) {
+                    scale = 1f;
+                    alpha = 255;
+                } else {
+                    scale = 0.5f;
+                    alpha = 126;
+                }
+            } else {
+                scale = scaleFloats[i];
+                alpha = alphas[i];
+            }
+
+
             canvas.translate(point.x,point.y);
-            canvas.scale(scaleFloats[i],scaleFloats[i]);
-            paint.setAlpha(alphas[i]);
+            canvas.scale(scale, scale);
+            paint.setAlpha(alpha);
             canvas.drawCircle(0,0,radius,paint);
             canvas.restore();
         }
