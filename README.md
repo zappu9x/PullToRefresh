@@ -8,6 +8,9 @@ PullToRefresh
 ## Introduction
 PullToRefresh is a collection of nice pull to refresh layout for Android.
 
+## Demo
+![avi](demo.gif)
+
 ## Usage
 
 ### Step 1
@@ -58,3 +61,7 @@ Register listener for list pulled:
             }
         });
 ```
+## Library
+Thanks for share library
++ [AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
++ [Phoenix Pull-to-Refresh](https://github.com/Yalantis/Phoenix)
