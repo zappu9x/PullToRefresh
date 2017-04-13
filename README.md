@@ -37,6 +37,7 @@ Add dependencies in build.gradle.
 ### Step 3
 Add the PullToRefreshView to your layout:
 
+Simple
 ```java
   <com.vetrio.library.PullToRefreshView
       xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,6 +51,28 @@ Add the PullToRefreshView to your layout:
   </com.vetrio.library.PullToRefreshView>
 ```
 
+Advance
+
+```java
+<com.vetrio.library.PullToRefreshView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pull_to_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:progressName="BallIndicator"
+    app:progressColor="@color/colorPrimary"
+    app:titleColor="@color/colorPrimary"
+    app:titleText="Pull down to refresh!"
+    app:showTitle="true">
+    
+    ......
+    
+</com.vetrio.library.PullToRefreshView>
+```
+
+![avi](demo.gif)
+![avi](demo2.gif)
 ### Step 4
 Register listener for list pulled:
 
