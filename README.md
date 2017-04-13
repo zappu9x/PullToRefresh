@@ -43,7 +43,10 @@ Simple
       xmlns:android="http://schemas.android.com/apk/res/android"
       android:id="@+id/pull_to_refresh"
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      app:progressColor="@color/colorPrimary"
+      app:titleColor="@color/colorPrimary"
+      app:titleText="@string/pull_to_refresh">
   
       <android.support.v7.widget.RecyclerView
           android:layout_width="match_parent"
