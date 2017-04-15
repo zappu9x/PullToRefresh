@@ -9,7 +9,7 @@ PullToRefresh
 PullToRefresh is a collection of nice pull to refresh layout for Android.
 
 ## Demo
-![avi](demo.gif)
+![avi](demo2.gif)
 
 ## Usage
 
@@ -76,6 +76,7 @@ Advance
 
 ![avi](demo.gif)
 ![avi](demo2.gif)
+![avi](demo3.gif)
 ### Step 4
 Register listener for list pulled:
 
