@@ -8,41 +8,51 @@ import android.animation.ValueAnimator;
 import java.util.ArrayList;
 
 public class BallIndicator extends Indicator {
+    public int n = 10;
 
-    public static final float SCALE=1.0f;
+    private static final float SCALE=1.0f;
+    private static final int ALPHA=255;
 
-    public static final int ALPHA=255;
+    public boolean isSmoothScale = true, isSmoothAlpha = true;
+    public boolean isScale = true, isAlpha = true;
 
-    float[] scaleFloats=new float[]{SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE,
-            SCALE};
+    public float[] scales;
+    public int[] alphas;
+    public int[] delays;
 
-    int[] alphas=new int[]{ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA,
-            ALPHA};
+    public BallIndicator() {
+        super();
+        setUp();
+    }
 
+    public void setUp() {
+        scales = new float[n];
+        alphas = new int[n];
+        delays = new int[n];
+        for(int i = 0; i < n; i++) {
+            scales[i] = SCALE;
+            alphas[i] = ALPHA;
+            delays[i] = i*80;
+        }
+    }
+
+    public BallIndicator(int n) {
+        super();
+        this.n = n;
+        setUp();
+    }
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
         float radius=getWidth()/10;
         float scale;
         int alpha;
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < n; i++) {
             canvas.save();
-            Point point=circleAt(getWidth(),getHeight(),getWidth()/2-radius,i*(Math.PI/4));
+            Point point=circleAt(getWidth(),getHeight(),getWidth()/2-radius,i*(Math.PI*2/n));
 
             if(!isRefreshing) {
-                if(i < percent * 8) {
+                if(i < percent * n) {
                     scale = 1f;
                     alpha = 255;
                 } else {
@@ -50,7 +60,7 @@ public class BallIndicator extends Indicator {
                     alpha = 126;
                 }
             } else {
-                scale = scaleFloats[i];
+                scale = scales[i];
                 alpha = alphas[i];
             }
 
@@ -66,26 +76,31 @@ public class BallIndicator extends Indicator {
     @Override
     public ArrayList<ValueAnimator> onCreateAnimators() {
         ArrayList<ValueAnimator> animators=new ArrayList<>();
-        int[] delays= {0, 120, 240, 360, 480, 600, 720, 780, 840};
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < n; i++) {
             final int index=i;
-            ValueAnimator scaleAnim=ValueAnimator.ofFloat(1,0.4f,1);
-            scaleAnim.setDuration(1000);
+            ValueAnimator scaleAnim = isScale ?
+                    isSmoothScale? ValueAnimator.ofFloat(1, 0.4f, 1): ValueAnimator.ofFloat(1, 0.4f):
+                    ValueAnimator.ofFloat(1, 1f);
+
+            scaleAnim.setDuration(delays[n -1]);
             scaleAnim.setRepeatCount(-1);
             scaleAnim.setStartDelay(delays[i]);
             addUpdateListener(scaleAnim,new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    scaleFloats[index] = (float) animation.getAnimatedValue();
+                    scales[index] = (float) animation.getAnimatedValue();
                     postInvalidate();
                 }
             });
 
-            ValueAnimator alphaAnim=ValueAnimator.ofInt(255, 77, 255);
-            alphaAnim.setDuration(1000);
+            ValueAnimator alphaAnim = isAlpha?
+                    isSmoothAlpha? ValueAnimator.ofInt(255, 77, 255): ValueAnimator.ofInt(255, 0):
+                    ValueAnimator.ofInt(255, 255);
+
+            alphaAnim.setDuration(delays[n-1]);
             alphaAnim.setRepeatCount(-1);
             alphaAnim.setStartDelay(delays[i]);
-            addUpdateListener(alphaAnim,new ValueAnimator.AnimatorUpdateListener() {
+            addUpdateListener(alphaAnim, new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
                     alphas[index] = (int) animation.getAnimatedValue();
@@ -98,15 +113,6 @@ public class BallIndicator extends Indicator {
         return animators;
     }
 
-    /**
-     * 圆O的圆心为(a,b),半径为R,点A与到X轴的为角α.
-     *则点A的坐标为(a+R*cosα,b+R*sinα)
-     * @param width
-     * @param height
-     * @param radius
-     * @param angle
-     * @return
-     */
     Point circleAt(int width,int height,float radius,double angle){
         float x= (float) (width/2+radius*(Math.cos(angle)));
         float y= (float) (height/2+radius*(Math.sin(angle)));

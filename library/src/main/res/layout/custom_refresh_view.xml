@@ -12,17 +12,12 @@
         android:id="@+id/loading"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        style="@style/AVLoadingIndicatorView"
         android:visibility="visible"
-        app:indicatorName="LineIndicator"
-        app:indicatorColor="#FF9800"
         android:padding="4dp"/>
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:lines="1"
-        android:text="Pull to refresh!"
-        android:textSize="12sp"
-        android:textColor="#FF9800"/>
+        android:textSize="12sp"/>
 </LinearLayout>

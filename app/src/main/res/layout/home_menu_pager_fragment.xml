@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:titleText="Pull to refresh!"
-    app:titleColor="@color/colorAccent"
+    app:titleColor="@color/colorPrimary"
     app:showTitle="true"
-    app:progressName="BallIndicator"
-    app:progressColor="@color/colorAccent">
+    app:progressName="LineIndicator"
+    app:progressColor="@color/colorPrimary">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/product_list"

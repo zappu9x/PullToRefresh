@@ -10,7 +10,10 @@ public class LineIndicator extends BallIndicator {
     private ArrayList<RectF> rectFs = new ArrayList<>();
 
     public LineIndicator() {
-        super();
+        super(12);
+        isScale = false;
+        isAlpha = true;
+        isSmoothAlpha = false;
     }
 
     @Override
@@ -18,12 +21,12 @@ public class LineIndicator extends BallIndicator {
         float radius=getWidth()/10;
         float scale;
         int alpha;
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < n; i++) {
             canvas.save();
-            Point point=circleAt(getWidth(),getHeight(),getWidth()/2.5f-radius,i*(Math.PI/4));
+            Point point=circleAt(getWidth(),getHeight(),getWidth()/2.5f-radius,i*(Math.PI*2/n));
 
             if(!isRefreshing) {
-                if(i < percent * 8) {
+                if(i < percent * n) {
                     scale = 1f;
                     alpha = 255;
                 } else {
@@ -31,18 +34,18 @@ public class LineIndicator extends BallIndicator {
                     alpha = 126;
                 }
             } else {
-                scale = scaleFloats[i];
+                scale = scales[i];
                 alpha = alphas[i];
             }
             canvas.translate(point.x, point.y);
             canvas.scale(scale, scale);
-            canvas.rotate(i*45);
+            canvas.rotate(i*360/n);
             paint.setAlpha(alpha);
             if(isCreate) {
-                RectF rectF=new RectF(-radius,-radius/3f,2f*radius,radius/3f);
+                RectF rectF=new RectF(-radius,-radius/4f, radius,radius/4f);
                 rectFs.add(rectF);
             }
-            canvas.drawRoundRect(rectFs.get(i),5,5,paint);
+            canvas.drawRoundRect(rectFs.get(i),radius/4,radius/4, paint);
             canvas.restore();
         }
         isCreate = false;
