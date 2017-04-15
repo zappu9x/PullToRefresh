@@ -17,6 +17,7 @@
         <attr name="progressName" format="string">
             <enum name="LineIndicator" value="0"/>
             <enum name="BallIndicator" value="1"/>
+            <enum name="ArcIndicator" value="2"/>
         </attr>
         <attr name="progressColor" format="color"/>
     </declare-styleable>

@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.vetrio.library.progress.ArcIndicator;
 import com.vetrio.library.progress.BallIndicator;
 import com.vetrio.library.progress.Indicator;
 import com.vetrio.library.progress.LineIndicator;
@@ -57,6 +58,9 @@ public class RefreshView extends LinearLayout {
                 break;
             case 1:
                 mIndicator =  new BallIndicator();
+                break;
+            case 2:
+                mIndicator =  new ArcIndicator();
                 break;
             default:
                 mIndicator =  new LineIndicator();
