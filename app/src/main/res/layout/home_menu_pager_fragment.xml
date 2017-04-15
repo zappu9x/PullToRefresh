@@ -5,11 +5,10 @@
     android:id="@+id/pull_to_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     app:titleText="Pull to refresh!"
-    app:titleColor="@color/colorPrimary"
     app:showTitle="true"
-    app:progressName="LineIndicator"
-    app:progressColor="@color/colorPrimary">
+    app:progressName="LineIndicator">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/product_list"

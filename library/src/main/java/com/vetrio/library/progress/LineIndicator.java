@@ -10,7 +10,7 @@ public class LineIndicator extends BallIndicator {
     private ArrayList<RectF> rectFs = new ArrayList<>();
 
     public LineIndicator() {
-        super(12);
+        super(10);
         isScale = false;
         isAlpha = true;
         isSmoothAlpha = false;
