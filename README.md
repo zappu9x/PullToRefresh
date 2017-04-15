@@ -30,7 +30,7 @@ Add it in your root build.gradle at the end of repositories.
 Add dependencies in build.gradle.
 ```groovy
     dependencies {
-       compile 'com.github.vetrio2511:PullToRefresh:v1.3'
+       compile 'com.github.vetrio2511:PullToRefresh:v1.4'
     }
 ``` 
 
