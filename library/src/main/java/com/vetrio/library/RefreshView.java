@@ -34,10 +34,10 @@ public class RefreshView extends LinearLayout {
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PullToRefreshView, 0, 0);
         try {
             String titleText = typedArray.getString(R.styleable.PullToRefreshView_titleText);
-            int titleColor = typedArray.getColor(R.styleable.PullToRefreshView_titleColor, Color.WHITE);
+            int titleColor = typedArray.getColor(R.styleable.PullToRefreshView_titleColor, Color.parseColor("#9E9E9E"));
             boolean isShowTitle = typedArray.getBoolean(R.styleable.PullToRefreshView_showTitle, true);
             int progressName = typedArray.getInt(R.styleable.PullToRefreshView_progressName, 0);
-            int progressColor = typedArray.getColor(R.styleable.PullToRefreshView_progressColor, Color.WHITE);
+            int progressColor = typedArray.getColor(R.styleable.PullToRefreshView_progressColor, Color.parseColor("#9E9E9E"));
 
             mTitleView.setText(titleText);
             mTitleView.setTextColor(titleColor);
